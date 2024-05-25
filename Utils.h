@@ -25,6 +25,8 @@ void InitializeChips();
 
 int calculateHand(std::vector<int> hand);
 
+std::vector<sf::Sprite> getSuitSprites(int suit);
+
 Card generateCard();
 
 void render(sf::RenderWindow& window);

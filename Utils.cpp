@@ -152,24 +152,44 @@ int calculateHand(std::vector<int> hand) {
 	return sum;
 }
 
+std::vector<sf::Sprite> getSuitSprites(int suit) {//0 = spade, 1 = heart, 2 = clubs, 3 = diamonds
+    switch (suit)
+    {
+    case 0:
+        return spadeSprites;
+        break;
+    case 1:
+        return heartSprites;
+        break;
+    case 2:
+        return clubSprites;
+        break;
+    case 3: 
+        return diamondSprites;
+        break;
+    }
+}
+
 Card generateCard() {
 	return Card(cardValues[rand() % 13]);
 }
 
-void renderHand(std::vector<int> hand, int x, int y, sf::RenderWindow window) {
+void renderHand(std::vector<int> hand, int x, int y, sf::RenderWindow& window) {
     
 }
 
-void renderCard(int card, int x, int y, sf::RenderWindow window) {
-    
+void renderCard(Card card, int x, int y, sf::RenderWindow& window) {
+    card.getSprite().setPosition(x, y);
+    window.draw(card.getSprite());
 }
 
-void renderBet(int bet, int x, int y, sf::RenderWindow window) {
+void renderBet(int bet, int x, int y, sf::RenderWindow& window) {
 
 }
 
 void render(sf::RenderWindow& window) {
     renderSprites.clear();
+    renderCard(generateCard(), 100, 0, window);
     window.draw(title);
-    window.draw(heartSprites.at(6));
+    
 }
