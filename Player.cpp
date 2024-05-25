@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 
-
 void Player::setMoney(int value) {
 	Player::money = value;
 }
