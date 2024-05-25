@@ -8,7 +8,14 @@ protected:
 	Player dealer;
 	Player bot;
 
-	bool win;
+	int initialBet;
+	bool dealerblackJack;
+	bool playerblackJack;
+
+	bool dealerWin;
+	bool playerWin;
+
+	void round();
 
 	void recieveBets();
 	void dealHand();

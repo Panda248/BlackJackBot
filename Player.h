@@ -9,6 +9,8 @@ class Player
 
 	int money;
 
+public:
+
 	void setMoney(int value);
 	void addMoney(int value);
 	void removeMoney(int value);
@@ -18,7 +20,8 @@ class Player
 	std::vector<std::vector<Card>> hands;
 
 	std::vector<std::vector<Card>> getHands();
-	std::vector<Card> getHand(int index);
+	std::vector<Card>& getHand(int index);
+	int getValue(std::vector<Card>& hand);
 	void setHand(int index, std::vector<Card> hand);
 	void addHand(std::vector<Card> hand);
 
@@ -26,7 +29,9 @@ class Player
 
 	void setBet(int index, int value);
 	void addBet(int value);
+
 	int getBet(int index);
+
 	std::vector<int> getBets();
 
 	void Move();

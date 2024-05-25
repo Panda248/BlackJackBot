@@ -23,8 +23,15 @@ std::vector<std::vector<Card>> Player::getHands() {
 	return Player::hands;
 }
 
-std::vector<Card> Player::getHand(int index) {
+std::vector<Card>& Player::getHand(int index) {
 	return Player::hands.at(index);
+}
+
+int Player::getValue(std::vector<Card>& hand) {
+	int combinedValue;
+	for (Card& i : hand) combinedValue += i.getValue();
+
+	return combinedValue;
 }
 
 void Player::setHand(int index, std::vector<Card> hand) {
