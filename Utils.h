@@ -29,6 +29,7 @@ std::vector<sf::Sprite> getSuitSprites(int suit);
 
 Card generateCard();
 
+void renderBet(int bet, int x, int y, sf::RenderWindow& window);
 void renderHand(std::vector<Card> hand, float x, float y, sf::RenderWindow& window);
 void render(sf::RenderWindow& window);
 

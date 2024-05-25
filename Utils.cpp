@@ -6,15 +6,15 @@
 
 int cardValues[13] = { 11,2,3,4,5,6,7,8,9,10,10,10 };
 
-int chipValues[4] = { 5,10,25,100 };
+int chipValues[4] = { 1,5,25,100 };
 
 const int CARD_WIDTH = 88;
 const int CARD_HEIGHT = 124;
-const int CARD_OFFSET(22);
+const int CARD_OFFSET = 22;
 
 const int CHIP_WIDTH = 64;
 const int CHIP_HEIGHT = 72;
-const int CHIP_OFFSET(16);
+const int CHIP_OFFSET = 10;
 
 sf::Font jqkasWild;
 sf::Text title;
@@ -115,9 +115,9 @@ void InitializeChips() {
 
     sf::Sprite sprite;
     sprite.setTexture(chips);
-    sprite.setTextureRect(sf::IntRect(CHIP_WIDTH, 0, CHIP_WIDTH, CHIP_HEIGHT));
+    sprite.setTextureRect(sf::IntRect(0, 0, CHIP_WIDTH, CHIP_HEIGHT));
     chipSprites.push_back(sprite);
-    sprite.setTextureRect(sf::IntRect(CHIP_WIDTH * 2, 0, CHIP_WIDTH, CHIP_HEIGHT));
+    sprite.setTextureRect(sf::IntRect(CHIP_WIDTH, 0, CHIP_WIDTH, CHIP_HEIGHT));
     chipSprites.push_back(sprite);
     sprite.setTextureRect(sf::IntRect(CHIP_WIDTH * 2, CHIP_HEIGHT, CHIP_WIDTH, CHIP_HEIGHT));
     chipSprites.push_back(sprite);
@@ -190,7 +190,20 @@ void renderHand(std::vector<Card> hand, float x, float y, sf::RenderWindow& wind
 
 
 void renderBet(int bet, int x, int y, sf::RenderWindow& window) {
+    std::vector<sf::Sprite> renderChips;
+    sf::Sprite tempSprite;
+    int chips[4];
+    for (int i = 0; i < 4; i++) {
+        chips[i] = bet / chipValues[3-i];
+        bet %= chipValues[3-i];
 
+        for (int j = 0; j < chips[i]; j++) {
+            tempSprite = chipSprites.at(3-i);
+            tempSprite.setPosition(x + CHIP_WIDTH * i, y - CHIP_OFFSET * j);
+            window.draw(tempSprite);
+            //renderChips.push_back(chipSprites.at(i));
+        }
+    }
 }
 
 void render(sf::RenderWindow& window) {

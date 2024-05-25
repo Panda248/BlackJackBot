@@ -42,10 +42,10 @@ int main()  {
         window.clear(getBackground());
 
         //render(window);
-        testHand.push_back(generateCard());
+        //testHand.push_back(generateCard());
 
-        renderHand(testHand, 50, 100, window);
-
+        //renderHand(testHand, 50, 100, window);
+        renderBet(162, 50, 100, window);
         window.display();
     }
 
