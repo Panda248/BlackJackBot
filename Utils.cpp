@@ -174,22 +174,27 @@ Card generateCard() {
 	return Card(cardValues[rand() % 13]);
 }
 
-void renderHand(std::vector<int> hand, int x, int y, sf::RenderWindow& window) {
-    
-}
-
-void renderCard(Card card, int x, int y, sf::RenderWindow& window) {
+void renderCard(Card card, float x, float y, sf::RenderWindow& window) {
     card.getSprite().setPosition(x, y);
+
     window.draw(card.getSprite());
 }
+
+
+void renderHand(std::vector<Card> hand, float x, float y, sf::RenderWindow& window) {
+    for (int i = 0; i < hand.size(); i++) {
+        renderCard(hand.at(i), x + CARD_OFFSET * i, y, window);
+    }
+}
+
+
 
 void renderBet(int bet, int x, int y, sf::RenderWindow& window) {
 
 }
 
 void render(sf::RenderWindow& window) {
-    renderSprites.clear();
-    renderCard(generateCard(), 100, 0, window);
+    renderCard(generateCard(), 10.f, 10.f, window);
     window.draw(title);
     
 }

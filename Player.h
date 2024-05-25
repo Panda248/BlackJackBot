@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include "Card.h"
 
 
 class Player
@@ -15,12 +15,12 @@ class Player
 	int getMoney();
 
 
-	std::vector<std::vector<int>> hands;
+	std::vector<std::vector<Card>> hands;
 
-	std::vector<std::vector<int>> getHands();
-	std::vector<int> getHand(int index);
-	void setHand(int index, std::vector<int> hand);
-	void addHand(std::vector<int> hand);
+	std::vector<std::vector<Card>> getHands();
+	std::vector<Card> getHand(int index);
+	void setHand(int index, std::vector<Card> hand);
+	void addHand(std::vector<Card> hand);
 
 	std::vector<int> bets;
 
@@ -30,10 +30,10 @@ class Player
 	std::vector<int> getBets();
 
 	void Move();
-	void Hit(std::vector<int> &hand);
+	void Hit(std::vector<Card> &hand);
 	void Stand();
-	void Split(std::vector<int> &hand, int bet);
-	bool canSplit(std::vector<int> hand);
+	void Split(std::vector<Card> &hand, int bet);
+	bool canSplit(std::vector<Card> &hand);
 	void Double(int &bet);
 
 };

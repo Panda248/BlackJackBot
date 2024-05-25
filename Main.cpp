@@ -3,7 +3,7 @@
 #include "Utils.h"
 #include <iostream>
 #include <ctime>
-
+#include "Card.h"
 
 sf::RenderWindow window;
 
@@ -23,7 +23,8 @@ int main()  {
     InitializeChips();
     InitializeCards();
 
-
+    std::vector<Card> testHand;
+    
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -40,8 +41,10 @@ int main()  {
         // clear the window with black color
         window.clear(getBackground());
 
-        render(window);
+        //render(window);
+        testHand.push_back(generateCard());
 
+        renderHand(testHand, 50, 100, window);
 
         window.display();
     }

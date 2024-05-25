@@ -20,19 +20,19 @@ int Player::getMoney() {
 	return Player::money;
 }
 
-std::vector<std::vector<int>> Player::getHands() {
+std::vector<std::vector<Card>> Player::getHands() {
 	return Player::hands;
 }
 
-std::vector<int> Player::getHand(int index) {
+std::vector<Card> Player::getHand(int index) {
 	return Player::hands.at(index);
 }
 
-void Player::setHand(int index, std::vector<int> hand) {
+void Player::setHand(int index, std::vector<Card> hand) {
 	Player::hands.assign(index, hand);
 }
 
-void Player::addHand(std::vector<int> hand) {
+void Player::addHand(std::vector<Card> hand) {
 	Player::hands.push_back(hand);
 }
 
@@ -52,12 +52,12 @@ std::vector<int> Player::getBets() {
 	return Player::bets;
 }
 
-bool Player::canSplit(std::vector<int> hand) {
+bool Player::canSplit(std::vector<Card> &hand) {
 	if (this -> hands.size() > MAX_HANDS) {
 		return false;
 	}
 
-	return (hand.size() == 2 && (hand.at(0) == hand.at(1)));
+	return (hand.size() == 2 && (hand.at(0).getValue() == hand.at(1).getValue()));
 }
 
 
@@ -66,8 +66,8 @@ void Player::Move() {
 }
 
 
-void Player::Hit(std::vector<int> &hand) {
-
+void Player::Hit(std::vector<Card> &hand) {
+	hand.push_back(generateCard());
 }
 
 void Player::Stand() {
@@ -75,7 +75,7 @@ void Player::Stand() {
 }
 
 
-void Player::Split(std::vector<int> &hand, int bet) {
+void Player::Split(std::vector<Card> &hand, int bet) {
 	if (canSplit(hand)) {
 		hand.pop_back();
 		addHand(hand);

@@ -7,7 +7,7 @@ class Card {
 		Card(int value);
 		int getValue();
 		int getSuit();
-		sf::Sprite getSprite();
+		sf::Sprite& getSprite();
 	protected:
 		int number;
 		int suit;
