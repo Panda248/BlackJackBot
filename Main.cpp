@@ -5,18 +5,13 @@
 #include <ctime>
 
 
-
-
-
 sf::RenderWindow window;
-
 
 
 int main()  {
     srand(time(NULL));
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "BlackJack AI");
-    
     
     InitializeTextures();
     InitializeColors();
