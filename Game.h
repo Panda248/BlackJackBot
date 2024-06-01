@@ -15,6 +15,8 @@ protected:
 	bool dealerWin;
 	bool playerWin;
 
+	void initialize();
+
 	void round();
 
 	void recieveBets();

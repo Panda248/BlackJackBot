@@ -15,7 +15,7 @@ public:
 	void addMoney(int value);
 	void removeMoney(int value);
 	int getMoney();
-
+		
 
 	std::vector<std::vector<Card>> hands;
 

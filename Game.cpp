@@ -1,6 +1,9 @@
 #include "Game.h"
 #include "Utils.h"
 
+void Game::initialize() {
+}
+
 void Game::round() 
 {
 	recieveBets();
