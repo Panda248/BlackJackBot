@@ -4,15 +4,15 @@
 #include <iostream>
 #include <ctime>
 #include "Card.h"
+#include "Game.h"
 
 sf::RenderWindow window;
-
+Game game;
 
 int main()  {
     srand(time(NULL));
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "BlackJack AI");
-    
     InitializeTextures();
     InitializeColors();
     InitializeFonts();
@@ -39,12 +39,11 @@ int main()  {
 
         // clear the window with black color
         window.clear(getBackground());
-
+        
         //render(window);
         //testHand.push_back(generateCard());
-
+        game.round(window);
         //renderHand(testHand, 50, 100, window);
-        renderBet(162, 50, 100, window);
         window.display();
     }
 

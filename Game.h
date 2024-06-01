@@ -3,6 +3,10 @@
 #include "Player.h"
 
 class Game {
+public:
+	void render(sf::RenderWindow& window);
+	void update();
+	void round(sf::RenderWindow& window);
 
 protected:
 	Player dealer;
@@ -15,8 +19,7 @@ protected:
 	bool dealerWin;
 	bool playerWin;
 
-	void round();
-
+	
 	void recieveBets();
 	void dealHand();
 	void recieveMoves();

@@ -1,10 +1,20 @@
 #include "Game.h"
 #include "Utils.h"
+#include <thread>
+#include <chrono>
+#include <iostream>
 
-void Game::round() 
+
+void Game::round(sf::RenderWindow& window) 
 {
+	bot.Init();
+	dealer.Init();
 	recieveBets();
+	renderBet(bot.getBet(0), 200, 300, window);
 	dealHand();
+	renderHand(bot.getHand(0), 200, 250, window);
+	renderHand(dealer.getHand(0), 200, 100, window);
+	std::this_thread::sleep_for(std::chrono::seconds(3));
 	recieveMoves();
 	winCondition();
 }
@@ -12,6 +22,7 @@ void Game::round()
 void Game::recieveBets()
 {
 	//bot card counts first, then determines optimal bet
+	bot.addBet(10);
 	initialBet = bot.getBet(0);
 }
 
@@ -42,6 +53,7 @@ void Game::winCondition() {
 	if (bot.hasMultipleHands()) {
 		bot.evaluateHand(bot.getHand(1), dealerVal);
 	}
+	std::cout << "Money" << bot.getMoney() << std::endl;
 }
 
 void Game::shuffleDeck()
