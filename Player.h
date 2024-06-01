@@ -22,6 +22,9 @@ public:
 	std::vector<std::vector<Card>> getHands();
 	std::vector<Card>& getHand(int index);
 	int getValue(std::vector<Card>& hand);
+	bool isBust(std::vector<Card>& hand);
+	bool isBlackJack(std::vector<Card>& hand);
+	bool hasMultipleHands();
 	void setHand(int index, std::vector<Card> hand);
 	void addHand(std::vector<Card> hand);
 

@@ -20,13 +20,22 @@ void Game::dealHand()
 	dealer.Hit(dealer.getHand(0));
 	bot.Hit(bot.getHand(0));
 
-	if (dealer.getValue(dealer.getHand(0)) == 21) {
-		blackJack = true;
-	}
+	// TODO: remove unused booleans
 }
 
 void Game::recieveMoves()
-{
+{	
+	bot.Move();
+	dealer.Move();
+}
+
+void Game::winCondition(){
+	bool hasSplit = bot.hasMultipleHands();
+
+
+
+	if ((dealerblackJack && playerblackJack) || ) {
+	}
 
 }
 

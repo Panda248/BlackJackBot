@@ -34,6 +34,18 @@ int Player::getValue(std::vector<Card>& hand) {
 	return combinedValue;
 }
 
+bool Player::isBust(std::vector<Card>& hand) {
+	return getValue(hand) > 21;
+}
+
+bool Player::isBlackJack(std::vector<Card>& hand) {
+	return getValue(hand) == 21;
+}
+
+bool Player::hasMultipleHands() {
+	return getHands().size() > 1;
+}
+
 void Player::setHand(int index, std::vector<Card> hand) {
 	Player::hands.assign(index, hand);
 }

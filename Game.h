@@ -21,5 +21,7 @@ protected:
 	void dealHand();
 	void recieveMoves();
 
+	void winCondition();
+
 	void shuffleDeck();
 };

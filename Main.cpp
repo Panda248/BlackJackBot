@@ -17,8 +17,7 @@ int main()  {
     InitializeColors();
     InitializeFonts();
     InitializeText();
-    
-
+   
 
     InitializeChips();
     InitializeCards();
