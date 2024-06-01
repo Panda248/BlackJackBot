@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Utils.h"
 #include <SFML/Graphics.hpp>
-
+#include <iostream>
 
 void Player::setMoney(int value) {
 	Player::money = value;
@@ -28,7 +28,7 @@ std::vector<Card>& Player::getHand(int index) {
 }
 
 int Player::getValue(std::vector<Card>& hand) {
-	int combinedValue;
+	int combinedValue = 0;
 	for (Card& i : hand) combinedValue += i.getValue();
 
 	return combinedValue;
@@ -58,20 +58,26 @@ void Player::evaluateHand(std::vector<Card>& hand, int dealerVal) {
 	Result roundResult;
 
 	if (playerVal == 21) roundResult = blackjack;
-	else if (playerVal > dealerVal) roundResult = won;
-	else if (playerVal = dealerVal) roundResult = tie;
+	else if (playerVal > dealerVal && !isBust(hand)) roundResult = won;
+	else if (playerVal == dealerVal) roundResult = tie;
 	else roundResult = lost;
 
 	// what is the index of getBet() ?
 	switch (roundResult){
 		case blackjack:
 			addMoney(getBet(0) * 2);
+			std::cout << "BlackJack" << std::endl;
 			break;
 		case won:
 			addMoney(getBet(0));
+			std::cout << "Win" << std::endl;
 			break;
 		case lost:
 			removeMoney(getBet(0));
+			std::cout << "Lose" << std::endl;
+			break;
+		case tie:
+			std::cout << "Tie" << std::endl;
 	}
 }
 
@@ -88,7 +94,12 @@ void Player::setBet(int index, int value) {
 }
 
 void Player::addBet(int value) {
+	if (bets.back() == 0) {
+		bets.pop_back();
+	}
 	Player::bets.push_back(value);
+
+	
 }
 
 int Player::getBet(int index) {
@@ -107,6 +118,13 @@ bool Player::canSplit(std::vector<Card> &hand) {
 	return (hand.size() == 2 && (hand.at(0).getValue() == hand.at(1).getValue()));
 }
 
+void Player::Init() {
+	hands.clear();
+	bets.clear();
+	hands.resize(1);
+	bets.resize(1);
+	
+}
 
 void Player::Move() {
 

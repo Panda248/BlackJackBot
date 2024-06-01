@@ -105,6 +105,7 @@ void InitializeCardSprites(std::vector<sf::Sprite> &spriteVector, sf::Texture &t
         }
         sprite.setTexture(texture);
         sprite.setTextureRect(sf::IntRect(CARD_WIDTH*(i%5), CARD_HEIGHT*j, CARD_WIDTH, CARD_HEIGHT));
+        sprite.setOrigin(CARD_WIDTH / 2, CARD_HEIGHT / 2);
         spriteVector.push_back(sprite);
     }
     //std::cout << spriteVector.size();

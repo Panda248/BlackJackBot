@@ -39,6 +39,8 @@ public:
 
 	std::vector<int> getBets();
 
+	void Init();
+
 	void Move();
 	void Hit(std::vector<Card> &hand);
 	void Stand();
