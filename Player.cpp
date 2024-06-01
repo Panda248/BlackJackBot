@@ -46,6 +46,35 @@ bool Player::hasMultipleHands() {
 	return getHands().size() > 1;
 }
 
+bool Player::allMovesConcluded() {
+	// PLACEHOLDER
+	return true;
+}
+
+void Player::evaluateHand(std::vector<Card>& hand, int dealerVal) {
+	int playerVal = getValue(hand);
+	
+	enum Result { blackjack, won, tie, lost };
+	Result roundResult;
+
+	if (playerVal == 21) roundResult = blackjack;
+	else if (playerVal > dealerVal) roundResult = won;
+	else if (playerVal = dealerVal) roundResult = tie;
+	else roundResult = lost;
+
+	// what is the index of getBet() ?
+	switch (roundResult){
+		case blackjack:
+			addMoney(getBet(0) * 2);
+			break;
+		case won:
+			addMoney(getBet(0));
+			break;
+		case lost:
+			removeMoney(getBet(0));
+	}
+}
+
 void Player::setHand(int index, std::vector<Card> hand) {
 	Player::hands.assign(index, hand);
 }

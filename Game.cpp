@@ -3,7 +3,10 @@
 
 void Game::round() 
 {
-	
+	recieveBets();
+	dealHand();
+	recieveMoves();
+	winCondition();
 }
 
 void Game::recieveBets()
@@ -19,24 +22,26 @@ void Game::dealHand()
 
 	dealer.Hit(dealer.getHand(0));
 	bot.Hit(bot.getHand(0));
-
-	// TODO: remove unused booleans
 }
 
 void Game::recieveMoves()
 {	
-	bot.Move();
-	dealer.Move();
+	while (!bot.allMovesConcluded()) {
+		bot.Move();
+	}
+	while (!dealer.allMovesConcluded()) {
+		dealer.Move();
+	}
 }
 
-void Game::winCondition(){
-	bool hasSplit = bot.hasMultipleHands();
+void Game::winCondition() {
+	int dealerVal = dealer.getValue(dealer.getHand(0));
 
+	bot.evaluateHand(bot.getHand(0), dealerVal);
 
-
-	if ((dealerblackJack && playerblackJack) || ) {
+	if (bot.hasMultipleHands()) {
+		bot.evaluateHand(bot.getHand(1), dealerVal);
 	}
-
 }
 
 void Game::shuffleDeck()
