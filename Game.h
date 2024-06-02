@@ -12,6 +12,8 @@ protected:
 	Player dealer;
 	Player bot;
 
+	std::vector<std::vector<std::string>> BSChart;
+
 	int initialBet;
 	bool dealerblackJack;
 	bool playerblackJack;
