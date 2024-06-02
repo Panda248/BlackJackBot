@@ -56,8 +56,10 @@ bool Player::hasMultipleHands() {
 }
 
 bool Player::allMovesConcluded() {
-	// PLACEHOLDER
-	return true;
+	if (nextMove == possibleMoves::stand) {
+		return true;
+	}
+	return false;
 }
 
 void Player::evaluateHand(std::vector<Card>& hand, int dealerVal) {
@@ -128,6 +130,7 @@ bool Player::canSplit(std::vector<Card> &hand) {
 }
 
 void Player::Init() {
+	nextMove = possibleMoves::null;
 	hands.clear();
 	bets.clear();
 	hands.resize(1);
@@ -145,6 +148,7 @@ void Player::Move(int dealerVal) {
 	// FIRST HAND
 	std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
 	analyzeString(correspondingAction);
+
 	makeMove(0);
 
 	// SECOND HAND
@@ -200,12 +204,15 @@ void Player::makeMove(int handIndex) {
 	switch (nextMove) {
 	case possibleMoves::hit:
 		Hit(getHand(handIndex));
+		std::cout << "hit" << std::endl;
 		break;
 	case possibleMoves::stand:
 		Stand();
+		std::cout << "stand" << std::endl;
 		break;
 	case possibleMoves::doub:
 		Double(bets[0]);
+		std::cout << "double" << std::endl;
 		break;
 	}
 }
