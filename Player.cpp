@@ -132,7 +132,6 @@ void Player::Init() {
 	bets.clear();
 	hands.resize(1);
 	bets.resize(1);
-	
 }
 
 void Player::Move(int dealerVal) {

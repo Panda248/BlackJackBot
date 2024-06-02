@@ -9,7 +9,7 @@ class Player
 
 	int money;
 
-	static std::vector<std::vector<std::string>> chart;
+	inline static std::vector<std::vector<std::string>> chart;
 
 
 public:

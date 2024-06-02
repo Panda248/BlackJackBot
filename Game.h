@@ -7,7 +7,7 @@ public:
 	void render(sf::RenderWindow& window);
 	void update();
 	void round(sf::RenderWindow& window);
-	static std::vector<std::vector<std::string>> BSChart;
+	inline static std::vector<std::vector<std::string>> BSChart;
 
 
 protected:

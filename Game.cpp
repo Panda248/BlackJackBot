@@ -78,6 +78,8 @@ void Game::initialize() {
 
     std::string str = BSChart[0][0];
 
+    dealer.init();
+    bot.init();
 }
 
 void Game::round(sf::RenderWindow& window)
