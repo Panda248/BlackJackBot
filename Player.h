@@ -46,6 +46,7 @@ public:
 	void Init();
 
 	void Move();
+	void analyzeString(std::string s);
 	void Move(int dealerVal);
 	void Hit(std::vector<Card> &hand);
 	void Stand();
@@ -54,5 +55,6 @@ public:
 	void Double(int &bet);
 
 	int getRevealedValue();
+	void makeMove(int handIndex);
 };
 

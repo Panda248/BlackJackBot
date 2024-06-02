@@ -160,7 +160,7 @@ void Player::Move(int dealerVal) {
 void Player::Move() {
 }
 
-void analyzeString(std::string s) {
+void Player::analyzeString(std::string s) {
 	if (s.compare("H") == 0) {
 		nextMove = possibleMoves::hit;
 	}
@@ -180,7 +180,6 @@ void Player::Stand() {
 
 }
 
-
 void Player::Split(std::vector<Card> &hand, int bet) {
 	if (canSplit(hand)) {
 		hand.pop_back();
@@ -198,16 +197,16 @@ int Player::getRevealedValue()
 	return hands[0][0].getValue();
 }
 
-void makeMove(int handIndex) {
+void Player::makeMove(int handIndex) {
 	switch (nextMove) {
 	case possibleMoves::hit:
-		
+		Hit(getHand(handIndex));
 		break;
 	case possibleMoves::stand:
-
+		Stand();
 		break;
 	case possibleMoves::doub:
-
+		Double(bets[0]);
 		break;
 	}
 }
