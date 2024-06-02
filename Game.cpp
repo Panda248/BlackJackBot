@@ -87,7 +87,7 @@ void Game::round(sf::RenderWindow& window)
 	bot.Init();
 	dealer.Init();
 	recieveBets();
-	renderBet(bot.getBet(0), 200, 300, window);
+	renderBet(bot.getBet(0), 20, 300, window);
 	dealHand();
 	renderHand(bot.getHand(0), 200, 250, window);
 	renderHand(dealer.getHand(0), 200, 100, window);
@@ -115,7 +115,7 @@ void Game::dealHand()
 void Game::recieveMoves()
 {
 	while (!bot.allMovesConcluded()) {
-		bot.Move();
+		bot.Move(dealer.getRevealedValue());
 	}
 	while (!dealer.allMovesConcluded()) {
 		dealer.Move();

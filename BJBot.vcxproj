@@ -157,9 +157,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Downloads\Basic Strategy.csv" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

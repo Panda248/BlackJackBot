@@ -7,12 +7,13 @@ public:
 	void render(sf::RenderWindow& window);
 	void update();
 	void round(sf::RenderWindow& window);
+	static std::vector<std::vector<std::string>> BSChart;
+
 
 protected:
 	Player dealer;
 	Player bot;
 
-	std::vector<std::vector<std::string>> BSChart;
 
 	int initialBet;
 	bool dealerblackJack;

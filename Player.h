@@ -9,13 +9,17 @@ class Player
 
 	int money;
 
+	static std::vector<std::vector<std::string>> chart;
+
+
 public:
+
+	static void init();
 
 	void setMoney(int value);
 	void addMoney(int value);
 	void removeMoney(int value);
 	int getMoney();
-		
 
 	std::vector<std::vector<Card>> hands;
 
@@ -42,11 +46,13 @@ public:
 	void Init();
 
 	void Move();
+	void Move(int dealerVal);
 	void Hit(std::vector<Card> &hand);
 	void Stand();
 	void Split(std::vector<Card> &hand, int bet);
 	bool canSplit(std::vector<Card> &hand);
 	void Double(int &bet);
 
+	int getRevealedValue();
 };
 

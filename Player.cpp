@@ -2,6 +2,15 @@
 #include "Utils.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Game.h"
+
+enum class possibleMoves { hit, stand, doub, split, null};
+
+possibleMoves nextMove;
+
+void Player::init() {
+	chart = Game::BSChart;
+}
 
 void Player::setMoney(int value) {
 	Player::money = value;
@@ -126,10 +135,42 @@ void Player::Init() {
 	
 }
 
-void Player::Move() {
+void Player::Move(int dealerVal) {
+	if (dealerVal > 21) {
+		return;
+	}
 
+	int handOneValue = getValue(getHand(0));
+	int handTwoValue;
+
+	// FIRST HAND
+	std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
+	analyzeString(correspondingAction);
+	makeMove(0);
+
+	// SECOND HAND
+	if (hasMultipleHands()) {
+		handTwoValue = getValue(getHand(1));
+		std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
+		analyzeString(correspondingAction);
+		makeMove(1);
+	}
 }
 
+void Player::Move() {
+}
+
+void analyzeString(std::string s) {
+	if (s.compare("H") == 0) {
+		nextMove = possibleMoves::hit;
+	}
+	else if (s.compare("S") == 0) {
+		nextMove = possibleMoves::stand;
+	}
+	else if (s.compare("D") == 0) {
+		nextMove = possibleMoves::doub;
+	}
+}
 
 void Player::Hit(std::vector<Card> &hand) {
 	hand.push_back(generateCard());
@@ -152,4 +193,21 @@ void Player::Double(int &bet) {
 	bet *= 2;
 }
 
+int Player::getRevealedValue()
+{
+	return hands[0][0].getValue();
+}
 
+void makeMove(int handIndex) {
+	switch (nextMove) {
+	case possibleMoves::hit:
+		
+		break;
+	case possibleMoves::stand:
+
+		break;
+	case possibleMoves::doub:
+
+		break;
+	}
+}

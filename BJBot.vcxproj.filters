@@ -45,9 +45,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Downloads\Basic Strategy.csv">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>
