@@ -24,6 +24,8 @@ int main()  {
 
     std::vector<Card> testHand;
     
+    game.initialize();
+
     // run the program as long as the window is open
     while (window.isOpen())
     {

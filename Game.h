@@ -9,6 +9,7 @@ public:
 	void round(sf::RenderWindow& window);
 	inline static std::vector<std::vector<std::string>> BSChart;
 
+	void initialize();
 
 protected:
 	Player dealer;
@@ -21,8 +22,6 @@ protected:
 
 	bool dealerWin;
 	bool playerWin;
-
-	void initialize();
 
 	void recieveBets();
 	void dealHand();

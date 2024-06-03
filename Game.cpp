@@ -84,8 +84,6 @@ void Game::initialize() {
 
 void Game::round(sf::RenderWindow& window)
 {
-    initialize();
-
 	bot.Init();
 	dealer.Init();
 	recieveBets();
