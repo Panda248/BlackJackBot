@@ -55,15 +55,6 @@ bool Player::hasMultipleHands() {
 	return getHands().size() > 1;
 }
 
-bool Player::allMovesConcluded() {
-	if (nextMove == possibleMoves::stand) {
-		return true;
-	}
-
-
-	return false;
-}
-
 void Player::evaluateHand(std::vector<Card>& hand, int dealerVal) {
 	int playerVal = getValue(hand);
 	
@@ -139,6 +130,22 @@ void Player::Init() {
 	bets.resize(1);
 }
 
+int i;
+
+bool Player::allMovesConcluded() {
+	//i++;
+	//if (i > 5) {
+	//	return true;
+	//}
+	if (nextMove == possibleMoves::stand) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	std::cout << "final value: " + getValue(getHand(0)) << std::flush;
+}
+
 void Player::Move(int dealerVal) {
 	if (dealerVal > 21) { nextMove = possibleMoves::stand; return; }
 
@@ -175,6 +182,7 @@ void Player::analyzeString(std::string s) {
 	else if (s.compare("D") == 0) {
 		nextMove = possibleMoves::doub;
 	}
+	else nextMove = possibleMoves::stand;
 }
 
 void Player::Hit(std::vector<Card> &hand) {
@@ -206,15 +214,15 @@ void Player::makeMove(int handIndex) {
 	switch (nextMove) {
 	case possibleMoves::hit:
 		Hit(getHand(handIndex));
-		std::cout << "hit" << std::endl;
+		std::cout << "hit" << std::flush;
 		break;
 	case possibleMoves::stand:
 		Stand();
-		std::cout << "stand" << std::endl;
+		std::cout << "stand" << std::flush;
 		break;
 	case possibleMoves::doub:
 		Double(bets[0]);
-		std::cout << "double" << std::endl;
+		std::cout << "double" << std::flush;
 		break;
 	}
 }
