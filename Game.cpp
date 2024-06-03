@@ -114,12 +114,12 @@ void Game::dealHand()
 
 void Game::recieveMoves()
 {
-	while (!bot.allMovesConcluded()) {
+	//while (!bot.allMovesConcluded()) {
 		bot.Move(dealer.getRevealedValue());
-	}
-	while (!dealer.allMovesConcluded()) {
-		dealer.Move();
-	}
+	//}
+	//while (!dealer.allMovesConcluded()) {
+	//	dealer.Move();
+	//}
 }
 
 void Game::winCondition() {

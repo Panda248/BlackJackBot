@@ -59,6 +59,8 @@ bool Player::allMovesConcluded() {
 	if (nextMove == possibleMoves::stand) {
 		return true;
 	}
+
+
 	return false;
 }
 
@@ -138,22 +140,22 @@ void Player::Init() {
 }
 
 void Player::Move(int dealerVal) {
-	if (dealerVal > 21) {
-		return;
-	}
+	if (dealerVal > 21) { nextMove = possibleMoves::stand; return; }
 
 	int handOneValue = getValue(getHand(0));
 	int handTwoValue;
 
 	// FIRST HAND
+	if (handOneValue > 21) { nextMove = possibleMoves::stand; return; }
+
 	std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
 	analyzeString(correspondingAction);
-
 	makeMove(0);
 
 	// SECOND HAND
 	if (hasMultipleHands()) {
 		handTwoValue = getValue(getHand(1));
+		if (handTwoValue > 21) return;
 		std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
 		analyzeString(correspondingAction);
 		makeMove(1);
