@@ -14,7 +14,13 @@ int Card::getSuit() {
 }
 
 int Card::getValue() {
-	return number;
+	int actualValue = number + 1;
+	if (actualValue > 10) {
+		actualValue = 10;
+	}
+	if (number < 2) actualValue = 11;
+
+	return actualValue;
 }
 
 sf::Sprite& Card::getSprite() {

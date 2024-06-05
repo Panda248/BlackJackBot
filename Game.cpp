@@ -76,8 +76,6 @@ void Game::initialize() {
 
 	BSChart = readCSV(csvFile);
 
-    std::string str = BSChart[0][0];
-
     dealer.init();
     bot.init();
 }
