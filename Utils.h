@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Card.h"
-
+#include "Button.h"
 
 sf::Color getBackground();
 
@@ -13,10 +13,9 @@ std::vector<sf::Sprite> getClubSprites();
 std::vector<sf::Sprite> getDiamondSprites();
 std::vector<sf::Sprite> getChipSprites();
 
-
-
 void InitializeFonts();
 void InitializeColors();
+void InitializeButtons();
 void InitializeText();
 void InitializeTextures();
 void InitializeCards();

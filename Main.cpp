@@ -5,6 +5,7 @@
 #include <ctime>
 #include "Card.h"
 #include "Game.h"
+#include "Button.h"
 
 sf::RenderWindow window;
 Game game;
@@ -17,7 +18,7 @@ int main()  {
     InitializeColors();
     InitializeFonts();
     InitializeText();
-   
+    InitializeButtons();
 
     InitializeChips();
     InitializeCards();
@@ -45,6 +46,7 @@ int main()  {
         //render(window);
         //testHand.push_back(generateCard());
         game.round(window);
+        
         //renderHand(testHand, 50, 100, window);
         window.display();
     }
