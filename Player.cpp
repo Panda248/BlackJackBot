@@ -164,7 +164,7 @@ void Player::Move(int dealerVal) {
 		}
 		std::cout << "\n" << std::flush;
 	} */ 
-	std::cout << "\n" << dealerVal << std::flush;
+	std::cout << "\n" << "Dealer: " << dealerVal << " vs " << handOneValue << std::flush;
 
 
 	//std::string correspondingAction = chart[handOneValue - 3][dealerVal - 1];
@@ -221,7 +221,7 @@ void Player::Double(int &bet) {
 
 int Player::getRevealedValue()
 {
-	return hands[0][0].getValue();
+	return hands[0][0].getValue() + 1;
 }
 
 void Player::makeMove(int handIndex) {
