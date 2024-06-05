@@ -155,7 +155,7 @@ void Player::Move(int dealerVal) {
 	// FIRST HAND
 	if (handOneValue > 21) { nextMove = possibleMoves::stand; return; }
 
-	std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
+	std::string correspondingAction = chart[handOneValue - 3][dealerVal - 1];
 	analyzeString(correspondingAction);
 	makeMove(0);
 
@@ -163,7 +163,7 @@ void Player::Move(int dealerVal) {
 	if (hasMultipleHands()) {
 		handTwoValue = getValue(getHand(1));
 		if (handTwoValue > 21) return;
-		std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
+		std::string correspondingAction = chart[handTwoValue - 3][dealerVal - 1];
 		analyzeString(correspondingAction);
 		makeMove(1);
 	}
