@@ -46,7 +46,7 @@ public:
 	void Init();
 
 	void Move();
-	void analyzeString(std::string s);
+	void analyzeString(std::string &s);
 	void Move(int dealerVal);
 	void Hit(std::vector<Card> &hand);
 	void Stand();

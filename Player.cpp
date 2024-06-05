@@ -70,18 +70,19 @@ void Player::evaluateHand(std::vector<Card>& hand, int dealerVal) {
 	switch (roundResult){
 		case blackjack:
 			addMoney(getBet(0) * 2);
-			std::cout << "BlackJack" << std::endl;
+			std::cout << "\n " << "BlackJack " << std::endl;
 			break;
 		case won:
 			addMoney(getBet(0));
-			std::cout << "Win" << std::endl;
+			std::cout << "\n " << "Win " << std::endl;
 			break;
 		case lost:
 			removeMoney(getBet(0));
-			std::cout << "Lose" << std::endl;
+			std::cout << "\n " << "Lose " << std::endl;
 			break;
 		case tie:
-			std::cout << "Tie" << std::endl;
+			std::cout << " Tie " << std::endl;
+			break;
 	}
 }
 
@@ -137,17 +138,20 @@ bool Player::allMovesConcluded() {
 	//if (i > 5) {
 	//	return true;
 	//}
+
+	//std::cout << "Hand: " + getValue(getHand(0)) << std::flush;
+
 	if (nextMove == possibleMoves::stand) {
 		return true;
 	}
 	else {
 		return false;
 	}
-	std::cout << "final value: " + getValue(getHand(0)) << std::flush;
 }
 
 void Player::Move(int dealerVal) {
 	if (dealerVal > 21) { nextMove = possibleMoves::stand; return; }
+	if (dealerVal < 1) { dealerVal = 2; }
 
 	int handOneValue = getValue(getHand(0));
 	int handTwoValue;
@@ -155,15 +159,24 @@ void Player::Move(int dealerVal) {
 	// FIRST HAND
 	if (handOneValue > 21) { nextMove = possibleMoves::stand; return; }
 
-	std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
-	analyzeString(correspondingAction);
+	/* for (int i = 0; i < 20; i++) {
+		for (int j = 0; i < 11; j++) {
+		}
+		std::cout << "\n" << std::flush;
+	} */ 
+	std::cout << "\n" << dealerVal << std::flush;
+
+
+	//std::string correspondingAction = chart[handOneValue - 3][dealerVal - 1];
+	//analyzeString(correspondingAction);
+	nextMove = possibleMoves::stand;
 	makeMove(0);
 
 	// SECOND HAND
 	if (hasMultipleHands()) {
 		handTwoValue = getValue(getHand(1));
 		if (handTwoValue > 21) return;
-		std::string correspondingAction = chart[handOneValue + 3][dealerVal + 1];
+		std::string correspondingAction = chart[handOneValue - 3][dealerVal - 1];
 		analyzeString(correspondingAction);
 		makeMove(1);
 	}
@@ -172,7 +185,7 @@ void Player::Move(int dealerVal) {
 void Player::Move() {
 }
 
-void Player::analyzeString(std::string s) {
+void Player::analyzeString(std::string &s) {
 	if (s.compare("H") == 0) {
 		nextMove = possibleMoves::hit;
 	}
@@ -180,7 +193,8 @@ void Player::analyzeString(std::string s) {
 		nextMove = possibleMoves::stand;
 	}
 	else if (s.compare("D") == 0) {
-		nextMove = possibleMoves::doub;
+		nextMove = possibleMoves::stand;
+		// CHANGE BACK TO DOUBLE AFTER FIX
 	}
 	else nextMove = possibleMoves::stand;
 }
@@ -214,15 +228,15 @@ void Player::makeMove(int handIndex) {
 	switch (nextMove) {
 	case possibleMoves::hit:
 		Hit(getHand(handIndex));
-		std::cout << "hit" << std::flush;
+		std::cout << " Hit " << std::flush;
 		break;
 	case possibleMoves::stand:
 		Stand();
-		std::cout << "stand" << std::flush;
+		std::cout << " Stand " << std::flush;
 		break;
 	case possibleMoves::doub:
 		Double(bets[0]);
-		std::cout << "double" << std::flush;
+		std::cout << " Double " << std::flush;
 		break;
 	}
 }

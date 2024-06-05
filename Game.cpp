@@ -94,6 +94,8 @@ void Game::round(sf::RenderWindow& window)
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	recieveMoves();
 	winCondition();
+
+    std::cout << "\n" << std::flush;
 }
 
 void Game::recieveBets()
@@ -130,7 +132,7 @@ void Game::winCondition() {
 	if (bot.hasMultipleHands()) {
 		bot.evaluateHand(bot.getHand(1), dealerVal);
 	}
-	std::cout << "Money" << bot.getMoney() << std::endl;
+	std::cout << " Money: " << bot.getMoney() << std::endl;
 }
 
 void Game::shuffleDeck()
