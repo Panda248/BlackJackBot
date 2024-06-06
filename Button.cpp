@@ -55,7 +55,7 @@ void Button::update(sf::Vector2f mousePos)
 	}
 }
 
-void Button::render(sf::RenderTarget* target)
+void Button::render(sf::RenderWindow* target)
 {
 	target->draw(shape);
 }

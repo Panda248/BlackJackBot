@@ -36,7 +36,7 @@ std::vector<sf::Sprite> chipSprites;
 
 std::vector<sf::Sprite> renderSprites;
 
-Button nextRoundButton;
+//Button nextRoundButton = Button();
 
 sf::Color getBackground() {
     return background;
@@ -73,12 +73,12 @@ void InitializeButtons()
     sf::Color hover = sf::Color(80, 40, 40);
     sf::Color pressed = sf::Color(210, 70, 60);
 
-    nextRoundButton = Button(100.f, 100.f, 150.f, 75.f, &jqkasWild, std::string("ROUND"), unpressed, hover, pressed);
+    nextRoundButton = Button(300.f, 100.f, 150.f, 75.f, &jqkasWild, std::string("ROUND"), unpressed, hover, pressed);
 }
 
-void updateButtons() {
-    //nextRoundButton.update();
-
+void updateButtons(sf::Vector2f mousePos, sf::RenderWindow* target) {
+    nextRoundButton.update(mousePos);
+    nextRoundButton.render(target);
 }
 
 void InitializeText() {
@@ -226,5 +226,4 @@ void renderBet(int bet, int x, int y, sf::RenderWindow& window) {
 void render(sf::RenderWindow& window) {
     renderCard(generateCard(), 10.f, 10.f, window);
     window.draw(title);
-    
 }

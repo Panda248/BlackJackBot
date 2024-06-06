@@ -31,7 +31,7 @@ public:
 
 	void update(sf::Vector2f mousePos);
 
-	void render(sf::RenderTarget* target);
+	void render(sf::RenderWindow* target);
 
 	bool isPressed();
 };

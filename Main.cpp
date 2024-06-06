@@ -3,7 +3,6 @@
 #include "Utils.h"
 #include <iostream>
 #include <ctime>
-#include "Card.h"
 #include "Game.h"
 #include "Button.h"
 
@@ -45,7 +44,15 @@ int main()  {
         
         //render(window);
         //testHand.push_back(generateCard());
-        game.round(window);
+
+        sf::RenderWindow* target = &window;
+        sf::Vector2f mousePositionFloat = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
+
+        updateButtons(mousePositionFloat, target);
+
+        if (nextRoundButton.isPressed()) {
+            game.round(window);
+        }
         
         //renderHand(testHand, 50, 100, window);
         window.display();
