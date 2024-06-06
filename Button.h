@@ -22,6 +22,11 @@ private:
 	sf::Color hoverColor;
 	sf::Color pressedColor;
 
+	sf::Clock clock;
+
+	float timeAtFirstPress;
+	float timeElapsed;
+
 public:
 	Button(float x, float y, float width, float height,
 			sf::Font* font, std::string text,

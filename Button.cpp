@@ -33,12 +33,16 @@ Button::Button()
 
 void Button::update(sf::Vector2f mousePos)
 {
+	float currentTime = clock.getElapsedTime().asMilliseconds();
+	timeElapsed = currentTime - timeAtFirstPress;
+
 	buttonState = UNPRESSED;
 
-	if (shape.getGlobalBounds().contains(mousePos)) {
+	if (shape.getGlobalBounds().contains(mousePos) && timeElapsed > 500) {
 		buttonState = HOVER;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			buttonState = PRESSED;
+			timeAtFirstPress = currentTime;
 		}
 	}
 

@@ -82,18 +82,17 @@ void Game::initialize() {
 
 void Game::round(sf::RenderWindow& window)
 {
-	bot.Init();
-	dealer.Init();
+    bot.Init();
+    dealer.Init();
+
 	recieveBets();
 	renderBet(bot.getBet(0), 20, 300, window);
 	dealHand();
-	renderHand(bot.getHand(0), 200, 250, window);
-	renderHand(dealer.getHand(0), 200, 100, window);
+
+    render(window);
+
 	recieveMoves();
 	winCondition();
-
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-
 
     std::cout << "\n" << std::flush;
 }

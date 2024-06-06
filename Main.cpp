@@ -52,7 +52,6 @@ int main()  {
 
         if (nextRoundButton.isPressed()) {
             game.round(window);
-            game.render(window);
         }
         //renderHand(testHand, 50, 100, window);
         window.display();
