@@ -89,13 +89,18 @@ void Game::round(sf::RenderWindow& window)
 	dealHand();
 	renderHand(bot.getHand(0), 200, 250, window);
 	renderHand(dealer.getHand(0), 200, 100, window);
-	//std::this_thread::sleep_for(std::chrono::seconds(3));
 	recieveMoves();
-    renderHand(bot.getHand(0), 200, 250, window);
-    renderHand(dealer.getHand(0), 200, 100, window);
 	winCondition();
 
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+
     std::cout << "\n" << std::flush;
+}
+
+void Game::render(sf::RenderWindow& window) {
+    renderHand(bot.getHand(0), 200, 250, window);
+    renderHand(dealer.getHand(0), 200, 100, window);
 }
 
 void Game::recieveBets()
