@@ -14,10 +14,10 @@ Button::Button(float x, float y, float width, float height,
 	this->text.setString(text);
 
 	this->text.setFillColor(sf::Color::White);
-	this->text.setCharacterSize(12);
+	this->text.setCharacterSize(24);
 	this->text.setPosition(
 		shape.getPosition().x + width/2.f - this->text.getGlobalBounds().width / 2.f,
-		shape.getPosition().y + height/2.f - this->text.getGlobalBounds().height / 2.f
+		shape.getPosition().y + height/2.f - this->text.getGlobalBounds().height
 	);
 
 	this->defaultColor = defaultColor;
@@ -62,6 +62,7 @@ void Button::update(sf::Vector2f mousePos)
 void Button::render(sf::RenderWindow* target)
 {
 	target->draw(shape);
+	target->draw(text);
 }
 
 bool Button::isPressed() {

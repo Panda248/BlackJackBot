@@ -70,10 +70,10 @@ void InitializeColors() {
 void InitializeButtons()
 {
     sf::Color unpressed = sf::Color(0, 0, 0);
-    sf::Color hover = sf::Color(80, 40, 40);
-    sf::Color pressed = sf::Color(210, 70, 60);
+    sf::Color hover = sf::Color(210, 70, 60);
+    sf::Color pressed = sf::Color(80, 40, 40);
 
-    nextRoundButton = Button(300.f, 100.f, 150.f, 75.f, &jqkasWild, std::string("ROUND"), unpressed, hover, pressed);
+    nextRoundButton = Button(400.f, 150.f, 100.f, 60.f, &jqkasWild, std::string("ROUND"), unpressed, hover, pressed);
 }
 
 void updateButtons(sf::Vector2f mousePos, sf::RenderWindow* target) {
