@@ -86,10 +86,9 @@ void Game::round(sf::RenderWindow& window)
     dealer.Init();
 
 	recieveBets();
-	renderBet(bot.getBet(0), 20, 300, window);
 	dealHand();
 
-    render(window);
+    //render(window);
 
 	recieveMoves();
 	winCondition();
@@ -98,6 +97,7 @@ void Game::round(sf::RenderWindow& window)
 }
 
 void Game::render(sf::RenderWindow& window) {
+    renderBet(bot.getBet(0), 20, 300, window);
     renderHand(bot.getHand(0), 200, 250, window);
     renderHand(dealer.getHand(0), 200, 100, window);
 }

@@ -26,6 +26,8 @@ int main()  {
     
     game.initialize();
 
+    game.round(window);
+
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -53,6 +55,9 @@ int main()  {
         if (nextRoundButton.isPressed()) {
             game.round(window);
         }
+
+        game.render(window);
+
         //renderHand(testHand, 50, 100, window);
         window.display();
     }
